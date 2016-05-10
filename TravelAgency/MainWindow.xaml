@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelAgency"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="TravelAgency" Height="350" Width="525">
+    <StackPanel Name="stackPanel">
+        <TextBlock HorizontalAlignment="Center" Margin="50" FontSize="20">Добро пожаловать в TravelAgency!</TextBlock>
+        <Button Name="buttonSignIn" Width="100" Margin="5" Click="Button_SignIn_Click">Войти</Button>
+        <Button Name="buttonSignUp" Width="100" Margin="5" Click="Button_SignUp_Click">Регистрация</Button>
+    </StackPanel>
 </Window>
