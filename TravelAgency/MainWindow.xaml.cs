@@ -20,8 +20,9 @@ namespace TravelAgency
     /// </summary>
     public partial class MainWindow : Window
     {
-        UIElement[] members;
+        UIElement[] members = new UIElement[1];
         List<string> countries;
+        int _passport;
 
         public MainWindow()
         {
@@ -34,30 +35,47 @@ namespace TravelAgency
 
             TextBlock space = new TextBlock();
             space.Margin = new Thickness(40);
-            TextBlock block = new TextBlock();
-            block.Text = "Номер паспорта:";
-            block.FontSize = 16;
-            block.HorizontalAlignment = HorizontalAlignment.Center;
-            block.Margin = new Thickness(10);
-            TextBox box = new TextBox();
-            box.Width = 200;
-            box.HorizontalAlignment = HorizontalAlignment.Center;
-            Button button = new Button();
-            button.Content = "Войти";
-            button.HorizontalAlignment = HorizontalAlignment.Center;
-            button.Margin = new Thickness(10);
-            button.Width = 100;
+            TextBlock block = new TextBlock()
+            {
+                Text = "Номер паспорта:",
+                FontSize = 16,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Margin = new Thickness(10)
+            };
+            TextBox box = new TextBox()
+            {
+                Width = 200,
+                HorizontalAlignment = HorizontalAlignment.Center
+            };
+            Button button = new Button()
+            {
+                Content = "Войти",
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Margin = new Thickness(10),
+                Width = 100
+            };
             button.Click += button_SignIn_Final_Click;
             
             stackPanel.Children.Add(space);
             stackPanel.Children.Add(block);
             stackPanel.Children.Add(box);
             stackPanel.Children.Add(button);
+
+            members = new UIElement[stackPanel.Children.Count];
+            stackPanel.Children.CopyTo(members, 0);
         }
 
         private void button_SignIn_Final_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            TextBox t = (TextBox)members[2];
+            try
+            {
+                _passport = int.Parse(t.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Неверный формат ввода!");
+            }
         }
 
         private void Button_SignUp_Click(object sender, RoutedEventArgs e)
